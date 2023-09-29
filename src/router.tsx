@@ -1,6 +1,6 @@
 import type { RouteObject } from "react-router-dom";
 import { DefaultLayout } from "./layout/DefaultLayout";
-import { ChatPage } from "./modules/chat/pages/ChatPage";
+import { ChatPage } from "./modules/chat/pages/ChatPage/ChatPage";
 
 const routes: RouteObject[] = [
   {

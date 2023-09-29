@@ -1,0 +1,53 @@
+@keyframes goRight {
+    from {
+        left: -10%;
+        animation-timing-function: linear;
+    }
+
+    to {
+        left: 100%;
+        animation-timing-function: linear;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        /* transform: translateY(-25%) rotate(0deg); */
+        translate: 0px -25%;
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+    50% {
+        /* transform: translateY(0) rotate(180deg); */
+        translate: 0px 0%;
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+    }
+    100% {
+        /* transform: translateY(-25%) rotate(359deg); */
+        translate: 0px -25%;
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    }
+}
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+        animation-timing-function: linear;
+    }
+    to {
+        transform: rotate(359deg);
+        animation-timing-function: linear;
+
+    }
+}
+
+.tumbleweed-container {
+    animation: goRight 8s, bounce 1s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    /* animation-delay: 0.5s; */
+}
+
+.tumbleweed {
+    animation: rotate 3s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+}
