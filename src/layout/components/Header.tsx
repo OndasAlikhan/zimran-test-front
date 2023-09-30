@@ -1,6 +1,9 @@
 export const Header = () => {
   return (
-    <header className="flex justify-between items-center p-5 border h-[92px] ">
+    <header
+      className="flex justify-between items-center p-5 border h-[92px]"
+      data-testid="header"
+    >
       <span className="text-lg flex items-center gap-1">
         <div className="w-10 h-10">
           <img src="cloud.svg" className="w-full h-full" />
