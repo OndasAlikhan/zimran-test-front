@@ -1,10 +1,11 @@
+import { ChatState } from "@/store/chatSlice";
 import { DialogueList } from "../../components/DialogueList";
 import { DialogueWindow } from "../../components/DialogueWindow";
 import { useSelector } from "react-redux";
 
 export const ChatDesktopPage = () => {
   const currentChatId = useSelector(
-    (state: any) => state.chatSlice.currentChat,
+    (state: { chatSlice: ChatState }) => state.chatSlice.currentChat,
   );
 
   return (

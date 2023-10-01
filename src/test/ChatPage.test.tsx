@@ -1,5 +1,5 @@
 import { ChatPage } from "@/modules/chat/pages/ChatPage/ChatPage";
-import { render, screen, userEvent } from "@/test-utils";
+import { render, screen } from "@/test-utils";
 
 describe("ChatPage test", () => {
   it("the header is visible", async () => {

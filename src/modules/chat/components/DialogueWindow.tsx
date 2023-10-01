@@ -7,17 +7,18 @@ import { useSelector } from "react-redux";
 import { useEffect, useMemo } from "react";
 import { sendNewMessage } from "@/socket";
 import { useGetMessagesQuery } from "@/store";
+import { ChatState } from "@/store/chatSlice";
 
 export const DialogueWindow = () => {
   const currentChatId = useSelector(
-    (state: any) => state.chatSlice.currentChat,
+    (state: { chatSlice: ChatState }) => state.chatSlice.currentChat,
   );
   const [requestUnreadMessages] = useUnreadMessagesMutation();
 
   const { data = [] as Dialogue[], isLoading: isChatsLoading } =
     useGetChatsQuery(""); // fetch chats from server
   const { data: messagesData, isLoading: isMessagesLoading } =
-    useGetMessagesQuery(currentChatId);
+    useGetMessagesQuery(currentChatId || 0);
 
   useEffect(() => {
     const currentChat: Dialogue = data.find(
@@ -26,15 +27,12 @@ export const DialogueWindow = () => {
     if (currentChat._count.messages > 0) requestUnreadMessages(currentChatId);
   }, [currentChatId, requestUnreadMessages, data]);
 
-  console.log("messagesData in DialogueWindow", messagesData);
-
   // const currentChat = useMemo(() => {
   //   return data.find((item: Dialogue) => item.id === currentChatId);
   // }, [data, currentChatId]);
   const currentChat = data.find((item: Dialogue) => item.id === currentChatId);
 
   const handleMessageSubmit = (value: string) => {
-    console.log("value", value);
     sendNewMessage({
       chatId: currentChat.id,
       text: value,

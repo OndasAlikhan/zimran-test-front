@@ -1,4 +1,4 @@
-import { Dialogue, Message } from "@/modules/chat/types";
+import { Message } from "@/modules/chat/types";
 import { socketDestroy, socketInit } from "@/socket";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
@@ -61,23 +61,12 @@ export const chatApi = createApi({
           : [{ type: "Messages", id: "LIST" }],
       async onCacheEntryAdded(
         arg,
-        {
-          updateCachedData,
-          cacheDataLoaded,
-          cacheEntryRemoved,
-          dispatch,
-          getState,
-        },
+        { updateCachedData, cacheDataLoaded, cacheEntryRemoved, dispatch },
       ) {
         try {
           await cacheDataLoaded;
           // saving incoming messages
           const onReceiveMessage = (data: Message) => {
-            console.log("from socket data.chatId", data.chatId);
-            console.log("about to invalidate arg:", {
-              type: "Chats",
-              id: arg,
-            });
             if (arg === data.chatId) {
               updateCachedData((draft) => {
                 draft.unshift({ ...data, animate: true });

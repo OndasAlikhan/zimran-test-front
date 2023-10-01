@@ -1,5 +1,5 @@
 import App from "@/App";
-import { render, screen, userEvent } from "@/test-utils";
+import { render, screen } from "@/test-utils";
 
 describe("App test", () => {
   it("the header is visible", () => {
@@ -16,9 +16,7 @@ describe("App test", () => {
   it("uses flexbox in App header", async () => {
     render(<App />);
     const element = screen.getByTestId("header");
-    console.log("element", element);
     expect(element.className).toContain("flex");
-    console.log("getComputedStyle(element)", getComputedStyle(element).display);
     expect(getComputedStyle(element).display).toEqual("flex");
   });
 });

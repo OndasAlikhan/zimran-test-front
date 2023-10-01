@@ -8,7 +8,6 @@ type Props = {
 export const MessageInput = ({ onSubmit }: Props) => {
   const [value, setValue] = useState("");
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    console.log("key event");
     if (e.key === "Enter") {
       handleSubmit();
     }

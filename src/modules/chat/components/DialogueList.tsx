@@ -8,12 +8,12 @@ import {
 import { BsPlus, BsFillXCircleFill } from "react-icons/bs";
 import { Dialogue } from "../types";
 import { useDispatch, useSelector } from "react-redux";
-import { setChat } from "@/store/chatSlice";
+import { ChatState, setChat } from "@/store/chatSlice";
 
 export const DialogueList = () => {
   const dispatch = useDispatch();
   const currentChatId = useSelector(
-    (state: any) => state.chatSlice.currentChat,
+    (state: { chatSlice: ChatState }) => state.chatSlice.currentChat,
   );
 
   const { data = [] as Dialogue[], isLoading } = useGetChatsQuery(""); // fetch chats from server
