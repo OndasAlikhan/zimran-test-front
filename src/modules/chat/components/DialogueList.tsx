@@ -22,7 +22,6 @@ export const DialogueList = () => {
     useDeleteChatMutation();
 
   const [newChatName, setNewChatName] = useState("");
-  const [listOfDialogues, setListOfDialogues] = useState([1, 1, 1]);
   const [openAddChat, setOpenAddChat] = useState(false);
 
   const handleOpenAddChat = () => {
@@ -70,7 +69,7 @@ export const DialogueList = () => {
         </form>
       ) : (
         <div className="h-24 border text-xl px-8 py-5 flex items-center font-semibold justify-between">
-          <span>Messages ({listOfDialogues.length})</span>
+          <span>Messages ({data.length})</span>
 
           <span onClick={handleOpenAddChat} className="hover:cursor-pointer">
             <BsPlus />
